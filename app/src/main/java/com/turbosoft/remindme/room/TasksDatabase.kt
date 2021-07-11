@@ -1,6 +1,5 @@
 package com.turbosoft.remindme.room
 
-import android.os.Parcel
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -17,8 +16,8 @@ abstract class TasksDatabase : RoomDatabase(){
     abstract fun taskDao(): TaskDao
 
     class Callback @Inject constructor(
-        private val applicationScope: CoroutineScope,
-        @ApplicationScope private val tasksDatabase: Provider<TasksDatabase>
+        @ApplicationScope private val applicationScope: CoroutineScope,
+        private val tasksDatabase: Provider<TasksDatabase>
     ) : RoomDatabase.Callback(){
 
         override fun onCreate(db: SupportSQLiteDatabase) {
