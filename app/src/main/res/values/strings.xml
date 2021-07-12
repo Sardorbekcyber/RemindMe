@@ -3,4 +3,5 @@
     <string name="floating_action_button">Floating Action Button</string>
     <string name="task_name">Task Name</string>
     <string name="task_is_important">Task is important</string>
+    <string name="search">Search</string>
 </resources>

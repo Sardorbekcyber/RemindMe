@@ -35,7 +35,7 @@ class TasksAdapter : ListAdapter<Task, TasksAdapter.TaskViewHolder>(DiffCallback
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasksAdapter.TaskViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val binding = ItemTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TaskViewHolder(binding)
     }

@@ -4,13 +4,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.turbosoft.remindme.room.TaskDao
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ViewModelScoped
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
 @HiltViewModel
 class TasksViewModel @Inject constructor(taskDao: TaskDao) : ViewModel() {
 
-    val tasks = taskDao.getAllTasks().asLiveData()
+    val searchQuery = MutableStateFlow("")
+    private val tasksFlow = searchQuery.flatMapLatest {
+        taskDao.getTasks(it)
+    }
+
+    val tasks = tasksFlow.asLiveData()
 
 
 }
